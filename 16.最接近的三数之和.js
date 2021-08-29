@@ -11,7 +11,6 @@
  * @return {number}
  */
 var threeSumClosest = function (nums, target) {
-<<<<<<< HEAD
   var result = Number.MAX_VALUE;
   nums.sort((i, i2) => i - i2);
   for (var i = 0; i < nums.length - 2; i++) {
@@ -30,13 +29,5 @@ var threeSumClosest = function (nums, target) {
     }
   }
   return result;
-=======
-  nums.sort((i, i2) => i - i2);
-  var result = Number.MAX_VALUE;
-  for (var i = 0; i < nums.length - 2; i++) {
-    var j = i + 1,
-      k = nums.length - 1;
-  }
->>>>>>> 16, 8
 };
 // @lc code=end
