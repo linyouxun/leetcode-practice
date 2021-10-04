@@ -4,6 +4,8 @@
  * [25] K 个一组翻转链表
  */
 
+const { reverse } = require("core-js/core/array");
+
 // @lc code=start
 /**
  * Definition for singly-linked list.
@@ -42,27 +44,52 @@
 //   return nodeHead.next;
 // };
 
+// var reverseKGroup = function (head, k) {
+//   if (!head) return null;
+//   var tail = head;
+//   for (var i = 1; i < k; i++) {
+//     tail = tail.next;
+//     if (!tail) return head;
+//   }
+//   var next = tail.next;
+//   tail.next = null;
+//   reverse(head);
+//   head.next = reverseKGroup(next, k);
+//   return tail;
+// };
+
+// function reverse(head) {
+//   var prev = null;
+//   while (head) {
+//     var next = head.next;
+//     head.next = prev;
+//     prev = head;
+//     head = next;
+//   }
+// }
+
 var reverseKGroup = function (head, k) {
-  if (!head) return null;
-  var tail = head;
+  if (!head) return head;
+  var last = head;
   for (var i = 1; i < k; i++) {
-    tail = tail.next;
-    if (!tail) return head;
+    last = last.next;
+    if (!last) return head;
   }
-  var next = tail.next;
-  tail.next = null;
+  var next = last.next;
+  last.next = null;
   reverse(head);
   head.next = reverseKGroup(next, k);
-  return tail;
+  return last;
 };
 
 function reverse(head) {
   var prev = null;
   while (head) {
-    var next = head.next;
+    var tmp = head.next;
     head.next = prev;
     prev = head;
-    head = next;
+    head = tmp;
   }
 }
+
 // @lc code=end
